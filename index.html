@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple HTML Program</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .input-group {
+            margin: 20px 0;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background: #ff6b6b;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+        }
+        
+        button:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        #output {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            min-height: 40px;
+            font-weight: bold;
+        }
+        
+        .color-box {
+            width: 100px;
+            height: 100px;
+            margin: 10px auto;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌟 Interactive HTML Program</h1>
+        
+        <div class="input-group">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" placeholder="Enter your name">
+        </div>
+        
+        <div class="input-group">
+            <label for="age">Your Age:</label>
+            <input type="number" id="age" placeholder="Enter your age" min="1" max="120">
+        </div>
+        
+        <div class="input-group">
+            <label for="color">Favorite Color:</label>
+            <select id="color">
+                <option value="#ff6b6b">Red</option>
+                <option value="#4ecdc4">Teal</option>
+                <option value="#45b7d1">Blue</option>
+                <option value="#96ceb4">Green</option>
+                <option value="#feca57">Yellow</option>
+                <option value="#ff9ff3">Pink</option>
+            </select>
+        </div>
+        
+        <button onclick="greetUser()">Greet Me!</button>
+        <button onclick="calculateAge()">Calculate Birth Year</button>
+        <button onclick="changeBackground()">Change Color</button>
+        <button onclick="showTime()">Show Current Time</button>
+        
+        <div id="output">Click a button to see the magic! ✨</div>
+        
+        <div class="color-box" id="colorBox" style="background-color: #ff6b6b;"></div>
+    </div>
+
+    <script>
+        function greetUser() {
+            const name = document.getElementById('name').value;
+            const output = document.getElementById('output');
+            
+            if (name.trim() === '') {
+                output.innerHTML = '👋 Please enter your name first!';
+            } else {
+                output.innerHTML = 🎉 Hello, ${name}! Welcome to this interactive program!;
+            }
+        }
+        
+        function calculateAge() {
+            const age = document.getElementById('age').value;
+            const output = document.getElementById('output');
+            
+            if (age === '' || age <= 0) {
+                output.innerHTML = '📅 Please enter a valid age!';
+            } else {
+                const currentYear = new Date().getFullYear();
+                const birthYear = currentYear - parseInt(age);
+                output.innerHTML = 🎂 You were born around ${birthYear}!;
+            }
+        }
+        
+        function changeBackground() {
+            const selectedColor = document.getElementById('color').value;
+            const colorBox = document.getElementById('colorBox');
+            const output = document.getElementById('output');
+            
+            colorBox.style.backgroundColor = selectedColor;
+            output.innerHTML = 🎨 Color changed to your favorite! Beautiful choice!;
+        }
+        
+        function showTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            const dateString = now.toLocaleDateString();
+            const output = document.getElementById('output');
+            
+            output.innerHTML = 🕒 Current time: ${timeString}<br>📅 Today's date: ${dateString};
+        }
+        
+        // Add some interactivity on page ssssssssssss
+        window.onload = function() {
+            const colorBox = document.getElementById('colorBox');
+            
+            // Make the color box interactive
+            colorBox.addEventListener('click', function() {
+                const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3'];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                this.style.backgroundColor = randomColor;
+                
+                document.getElementById('output').innerHTML = '🎯 You clicked the circle! Random color applied!';
+            });
+        }
+    </script>
+</body>
+</html>
